@@ -4,6 +4,7 @@
 const Hapi = require('@hapi/hapi'); //require hapi
 require('dotenv').config();// Get environment variables from the .env file
 const mongoose = require('mongoose');// Imports Mongoose library 
+const taskRoutes = require('./routes/task.route');
 
 const init = async () => {
 
@@ -28,17 +29,10 @@ const init = async () => {
     });
 
     //Routes
-    server.route({
-        method: 'GET',
-        path: '/',
-        handler: (request, h) => {
-
-            return 'Hello World!';
-        }
-    });
+    server.route(taskRoutes);
 
     //starting server
-    await server.start();
+    await server.start(taskRoutes);
     console.log('Server running on: ', server.info.uri);
 };
 
