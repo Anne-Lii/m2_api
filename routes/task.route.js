@@ -9,12 +9,17 @@ module.exports = [
         path: '/',
         handler: (request, h) => {
 
-            return 'Hello World!';
+            return 'Välkommen till Anne-Liis API!';
         }
     },
     {
         method: 'GET',
         path: '/task',
         handler: TaskController.getAllTasks
+    },
+    {
+        method: 'POST',
+        path: '/task',
+        handler: TaskController.createNewTask
     }
 ];

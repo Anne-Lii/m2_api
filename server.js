@@ -23,9 +23,9 @@ const init = async () => {
     //Connect to MongoDB database
     mongoose.connect(process.env.MONGO_URI)
     .then(() => {
-        console.log('Connected to MongoDB');
+        console.log('Kopplad till MongoDB');
     }).catch((error) => {
-        console.error('Could not connect to MongoDB', error);
+        console.error('Kunde inte koppla till MongoDB', error);
     });
 
     //Routes
@@ -33,7 +33,7 @@ const init = async () => {
 
     //starting server
     await server.start(taskRoutes);
-    console.log('Server running on: ', server.info.uri);
+    console.log('Server igång på: ', server.info.uri);
 };
 
 process.on('unhandledRejection', (err) => {
