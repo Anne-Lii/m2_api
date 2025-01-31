@@ -21,5 +21,10 @@ module.exports = [
         method: 'POST',
         path: '/task',
         handler: TaskController.createNewTask
+    },
+    {
+        method: 'DELETE',
+        path: '/task/{id}',
+        handler: TaskController.deleteTask
     }
 ];

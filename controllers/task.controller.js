@@ -24,6 +24,7 @@ exports.createNewTask = async (request, h) => {
 
     try {
         const newTask = new Task({
+
             title,
             description,
             status
@@ -35,4 +36,20 @@ exports.createNewTask = async (request, h) => {
     } catch (error) {
         return h.response({ message: error.message }).code(500);
     }
-}
+};
+
+//Delete a task
+exports.deleteTask = async (request, h) => {
+    try {
+        const {id} = request.params;
+        const deletedTask = await Task.findByIdAndDelete(id);
+
+        if (!deletedTask) {
+            return h.response({ message: 'Uppgiften hittades inte.' }).code(404);
+        } else {
+            return h.response({ message: 'Uppgiften har tagits bort.', task: deletedTask }).code(200);
+        }
+    } catch (error) {
+        return h.response({ message: error.message }).code(500);
+    }
+};
