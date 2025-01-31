@@ -26,5 +26,10 @@ module.exports = [
         method: 'DELETE',
         path: '/task/{id}',
         handler: TaskController.deleteTask
+    },
+    {
+        method: 'PUT',
+        path: '/task/{id}',
+        handler: TaskController.updateTask
     }
 ];

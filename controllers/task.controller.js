@@ -53,3 +53,27 @@ exports.deleteTask = async (request, h) => {
         return h.response({ message: error.message }).code(500);
     }
 };
+
+//Update a task
+exports.updateTask = async (request, h) => {
+
+    const {id} = request.params;
+    const { title, description, status } = request.payload;
+
+    try {
+        
+        const updatedTask = await Task.findByIdAndUpdate(id, {
+            title,
+            description,
+            status
+        }, { new: true });
+
+        if (!updatedTask) {
+            return h.response({ message: 'Uppgiften hittades inte.' }).code(404);
+        } else {
+            return h.response({ message: 'Uppgiften har uppdaterats.', task: updatedTask }).code(200);
+        }
+    } catch (error) {
+        return h.response({ message: error.message }).code(500);
+    }
+};
