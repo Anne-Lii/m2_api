@@ -32,7 +32,7 @@ const init = async () => {
     server.route(taskRoutes);
 
     //starting server
-    await server.start(taskRoutes);
+    await server.start();
     console.log('Server igång på: ', server.info.uri);
 };
 
